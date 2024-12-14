@@ -3,19 +3,19 @@
 
 char *join(char *str1, char *str2)
 {
-	
 	int i;
 	int j;
 	char *p;
-	int n = 0;
-	int t = ft_strlen(str2);
+	int n;
+	n = 0;
+	int t;
+	t = ft_strlen(str2);
 	j = ft_strlen(str1);
 	i = 0;
-	// static char *n;
-	if(!str1)
-		return getret(t + 1, str2);
-	if (!str2)
-		return getret(j + 1, str1);
+	// if(!str1)
+	// 	return ret(str2);
+	// if (!str2)
+	// 	return ret(str1);
 	p = malloc(t + j + 1);
 	while (str1[i])
 	{
@@ -26,6 +26,31 @@ char *join(char *str1, char *str2)
 		p[i++] = str2[n++];
 	p[i] = '\0';
 	return (p);
+}
+int newline(char *buff)
+{
+	int i;
+	i = 0;
+
+	while (buff[i])
+	{
+		if (buff[i] == '\n')
+			return i + 1;
+	i++;
+	}
+	return (-1);
+}
+int counttonwl(char *buff)
+{
+	int i;
+	i = 0;
+	while (buff[i])
+	{
+		if(buff[i] == '\n')
+			return (i);
+	i++;
+	}
+	return (i);
 }
 int ft_strlen(char *str)
 {

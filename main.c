@@ -8,17 +8,14 @@ int main()
     // printf("%s", get_next_line(fd2));
     // printf("%s", get_next_line(fd2));
     // printf("%s", get_next_line(fd2));
-    printf("\n-------first call-----\n");;
-    printf("RETURN ==== %s", get_next_line(fd2));
-    printf("\n-------seconde call-----\n");
-    printf("RETURN ==== %s", get_next_line(fd2));
-    printf("\n-------3 call-----\n");
-    printf("RETURN ==== %s", get_next_line(fd2));
-    printf("\n-------4 call-----\n");
-    printf("RETURN ==== %s", get_next_line(fd2));
-    printf("\n-------5 call-----\n");
-    printf("RETURN ==== %s", get_next_line(fd2));
-    printf("---");
+    // printf("\n-------first call-----\n");
+    printf("%s", get_next_line(fd2));
+    // printf("-------first call-----");
+    // printf("\n-------second call-----\n");
+    printf("%s", get_next_line(fd2));
+    // printf("-------seconde call-----");
+    
+    
     // system("leaks a.out");
     
     

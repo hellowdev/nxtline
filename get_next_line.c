@@ -1,109 +1,79 @@
 #include "get_next_line.h"
 #include <string.h>
 
-int nwline(char *str)
+char *afternwl(char *between)
 {
-	int i = 0;
-	while (str[i])
-	{
-		if (str[i] == '\n')
-		{
-			//printf("this is nwline%d\n", i);
-			return i + 1;
-		}
-		i++;
-	}
-	
-return i;
-}
-int nr(char *str)
-{
-	int i = 0;
-	if (!str)
-		return 0;
-
-	while (str[i])
-	{
-		if(str[i] == '\n')
-			return -1;
-	i++;
-	}
-	return i;
-}
-
-char *getret(int i, char *y)
-{
-	char *z;
-	int j;
-	int n;
-	j = 0;
-	n = 0;
-	
-	// if (!y)
-	// 	return (NULL);
-	z = malloc(i);
-	if (!z)
-		return (NULL);
-	while (n < i)
-	{
-		z[n] = y[j];
-		j++;
-		n++;
-	}
-	z[n] = '\0';
-	return (z);
-}
-char *afternw(int x, char *k)
-{
+	char *sauce;
 	int i;
-	int j;
-	char *rtn;
-	j = 0;
 	i = 0;
-	int total;
-	total = (ft_strlen(k) - x);
-	while (k[i])
+	int newlineh = newline(between);
+	int total = strlen(between) - newlineh;
+	sauce = malloc(total + 1);
+	
+
+	while (between[i] && i < total)
 	{
-		if(k[i - 1] == '\n')
-		{
-			rtn = getret(total, k + i);
-			printf("i >> %d\n", i);
-			return (rtn);
-		}
-	i++;
+		sauce[i] = between[newlineh];
+		i++;
+		newlineh++;
 	}
-	return (NULL);
+	
+	sauce[i] = '\0';
+	// printf("sauce >> %s\n", sauce);
+	return (sauce);
 }
+
+
+char *takeme(char *holder)
+{
+	char *dog;
+	int j;
+	int i;
+	j = 0;
+	if (newline(holder) != -1)
+	{
+		i = newline(holder);
+		dog = malloc(newline(holder) + 1);
+	}
+	else
+	{
+		i = counttonwl(holder);
+		dog = malloc(counttonwl(holder));
+	}
+	while (holder[j] && j < i)
+		{
+			dog[j] = holder[j];
+			j++;
+		}
+	dog[j] = '\0';
+	return (dog);
+}
+
 char *get_next_line(int fd)
 {
-	int sz;
-	static char *k;
-	char *x;
-    char *p;
-    int i;
+	int i;
+	int v = 1;
+	char *buffer;
+	static char *x;
+	char *holder;
+
+	holder = "";
+	buffer = malloc(BUFFER_SIZE + 1);
 	i = 0;
-	sz = 1;
-	p = malloc(BUFFER_SIZE + 1);
-	printf("KA >>>> %s\n", k);
-	if(!p)
-		return NULL;
-	while (sz != 0 && nr(k) != -1)
+	while (v != 0 && newline(holder) == -1)
 	{
-		sz = read(fd, p, BUFFER_SIZE);
-		p[sz] = '\0';
-		k = join(k, p);
-		if(nr(k) != -1)
-		{
-			i += sz;
-		}
-		else
-			i = nwline(k);
+		v = read(fd, buffer, BUFFER_SIZE);
+		buffer[v] = '\0';
+		holder = join(holder, buffer);
+		// printf(" i  %d\n", i);
 	}
-	x = getret(i, k);
-	
-	k = afternw(i, k);
-	printf("this is i if >> %d\n", i);
-	return (x);
+	// x = malloc(strlen(holder));
+	// afternwl(holder);
+	x = afternwl(holder);
+	holder = takeme(holder);
+	// printf("sauce >>>  %s\n", x);
+	// holder = join(x, holder);
+	// printf("sauce >>>  %s\n", x);
+	// printf(" >. %s\n", holder);
+	return (holder);
 }
-
-

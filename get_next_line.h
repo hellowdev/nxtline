@@ -7,11 +7,13 @@
 #include <fcntl.h>
 char *get_next_line(int fd);
 char *join(char *str1, char *str2);
-char *getret(int i, char *y);
-int nr(char *str);
-int nwline(char *str);
-char *afternw(int x, char *y);
+int newline(char *buff);
+char *takeme(char *holder);
 int ft_strlen(char *str);
+int newline(char *buff);
+char *afternwl(char *holder);
+int counttonwl(char *buff);
+int newline(char *buff);
 #endif
 #ifndef BUFFER_SIZE
 #define BUFFER_SIZE 5
