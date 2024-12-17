@@ -1,6 +1,14 @@
 #include "get_next_line.h"
 #include <string.h>
 
+void ft_free(char **p)
+{
+	if (p)
+	{
+		free(*p);
+		*p = NULL;	
+	}
+}
 char *join(char *str1, char *str2)
 {
 	int i;
@@ -12,10 +20,10 @@ char *join(char *str1, char *str2)
 	t = ft_strlen(str2);
 	j = ft_strlen(str1);
 	i = 0;
-	// if(!str1)
-	// 	return ret(str2);
-	// if (!str2)
-	// 	return ret(str1);
+	if(!str1)
+		return (takeme(str2));
+	if (!str2)
+		return (takeme(str1));
 	p = malloc(t + j + 1);
 	while (str1[i])
 	{
@@ -25,13 +33,15 @@ char *join(char *str1, char *str2)
 	while (str2[n])
 		p[i++] = str2[n++];
 	p[i] = '\0';
+	// ft_free(&str1);
 	return (p);
 }
 int newline(char *buff)
 {
 	int i;
 	i = 0;
-
+	if (!buff)
+		return (0);
 	while (buff[i])
 	{
 		if (buff[i] == '\n')
@@ -39,18 +49,6 @@ int newline(char *buff)
 	i++;
 	}
 	return (-1);
-}
-int counttonwl(char *buff)
-{
-	int i;
-	i = 0;
-	while (buff[i])
-	{
-		if(buff[i] == '\n')
-			return (i);
-	i++;
-	}
-	return (i);
 }
 int ft_strlen(char *str)
 {

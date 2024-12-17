@@ -11,10 +11,10 @@ int newline(char *buff);
 char *takeme(char *holder);
 int ft_strlen(char *str);
 int newline(char *buff);
-char *afternwl(char *holder);
-int counttonwl(char *buff);
+char *afternwl(char *holder, int len);
 int newline(char *buff);
+void ft_free(char **p);
 #endif
 #ifndef BUFFER_SIZE
-#define BUFFER_SIZE 5
+#define BUFFER_SIZE 42
 #endif

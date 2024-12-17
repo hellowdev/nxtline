@@ -4,19 +4,22 @@
 int main()
 {
     int fd2 = open("te.txt", O_RDWR);
-    // printf("%s", get_next_line(fd2));
-    // printf("%s", get_next_line(fd2));
-    // printf("%s", get_next_line(fd2));
-    // printf("%s", get_next_line(fd2));
-    // printf("\n-------first call-----\n");
-    printf("%s", get_next_line(fd2));
-    // printf("-------first call-----");
-    // printf("\n-------second call-----\n");
-    printf("%s", get_next_line(fd2));
-    // printf("-------seconde call-----");
-    
-    
-    // system("leaks a.out");
+    printf("\n------- call-----\n");
+    printf("RETURN>> [%s]\n", get_next_line(fd2));
+    printf("\n------------------------\n");
+    printf("RETURN>> [%s]", get_next_line(fd2));
+    printf("\n-----------------------\n");
+    printf("RETURN>> [%s]", get_next_line(fd2));
+    printf("\n---------------------\n");
+    printf("RETURN>> [%s]", get_next_line(fd2));
+    printf("\n--------------------\n");
+    printf("RETURN>> [%s]", get_next_line(fd2));
+    printf("\n-------------------\n");
+    printf("RETURN>> [%s]", get_next_line(fd2));
+    printf("\n------------------\n");
+    printf("RETURN>> [%s]", get_next_line(fd2));
+    printf("\n-----------------\n");
+    printf("RETURN>> [%s]", get_next_line(fd2));
     
     
 }
