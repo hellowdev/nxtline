@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ychedmi <ychedmi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/19 15:43:31 by ychedmi           #+#    #+#             */
-/*   Updated: 2024/12/19 17:02:20 by ychedmi          ###   ########.fr       */
+/*   Created: 2024/12/19 16:23:11 by ychedmi           #+#    #+#             */
+/*   Updated: 2024/12/19 17:02:30 by ychedmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 void	*ft_free(char **p)
 {
