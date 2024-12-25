@@ -5,22 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ychedmi <ychedmi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/19 16:23:11 by ychedmi           #+#    #+#             */
-/*   Updated: 2024/12/19 17:02:30 by ychedmi          ###   ########.fr       */
+/*   Created: 2024/12/25 13:12:12 by ychedmi           #+#    #+#             */
+/*   Updated: 2024/12/25 13:20:08 by ychedmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
-
-void	*ft_free(char **p)
-{
-	if (p)
-	{
-		free(*p);
-		*p = NULL;
-	}
-	return (NULL);
-}
 
 char	*join(char *str1, char *str2)
 {

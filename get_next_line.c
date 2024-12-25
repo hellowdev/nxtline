@@ -6,7 +6,7 @@
 /*   By: ychedmi <ychedmi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 15:41:34 by ychedmi           #+#    #+#             */
-/*   Updated: 2024/12/19 15:47:18 by ychedmi          ###   ########.fr       */
+/*   Updated: 2024/12/25 13:24:40 by ychedmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*afternwl(char *str)
 		{
 			p = malloc(ft_strlen(str) - i + 1);
 			if (!p)
-				return (ft_free(&str));
+				return (free(str), NULL);
 			while (str[i])
 				p[j++] = str[(i++) + 1];
 			p[j] = '\0';
@@ -35,7 +35,7 @@ char	*afternwl(char *str)
 		}
 		i++;
 	}
-	ft_free(&str);
+	free(str);
 	return (NULL);
 }
 
@@ -78,16 +78,16 @@ char	*get_next_line(int fd)
 	{
 		v = read(fd, buffer, BUFFER_SIZE);
 		if (v < 0 || !buffer)
-			return (ft_free(&str), ft_free(&buffer));
+			return (free(str), free(buffer), str = NULL, NULL);
 		buffer[v] = '\0';
 		str = join(str, buffer);
 	}
-	ft_free(&buffer);
+	free(buffer);
 	if (!str || (v == 0 && str[0] == '\0'))
-		return (ft_free(&str));
+		return (free(str), str = NULL, NULL);
 	all = takeme(str);
 	if (!all)
-		return (ft_free(&str));
+		return (free(str), str = NULL, NULL);
 	str = afternwl(str);
 	return (all);
 }

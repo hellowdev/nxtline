@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ychedmi <ychedmi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/19 16:20:12 by ychedmi           #+#    #+#             */
-/*   Updated: 2024/12/20 20:17:09 by ychedmi          ###   ########.fr       */
+/*   Created: 2024/12/25 13:12:04 by ychedmi           #+#    #+#             */
+/*   Updated: 2024/12/25 13:14:28 by ychedmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*afternwl(char *str)
 		{
 			p = malloc(ft_strlen(str) - i + 1);
 			if (!p)
-				return (ft_free(&str));
+				return (free(str), NULL);
 			while (str[i])
 				p[j++] = str[(i++) + 1];
 			p[j] = '\0';
@@ -35,7 +35,7 @@ char	*afternwl(char *str)
 		}
 		i++;
 	}
-	ft_free(&str);
+	free(str);
 	return (NULL);
 }
 
@@ -62,46 +62,32 @@ char	*takeme(char *str)
 	dog[j] = '\0';
 	return (dog);
 }
-#include <stdio.h>
+
 char	*get_next_line(int fd)
 {
 	int			v;
 	char		*buffer;
-	static char	*str;
+	static char	*str[OPEN_MAX];
 	char		*all;
-	
-	if (!str || (fd != str[fd]))
-		str = takeme("");
 
-		
-	printf("check before > [%s]\n", str);
-	printf("str fd>> [%d]\n", str[9]);
-	printf("str fd>> [%d]\n", str[fd + BUFFER_SIZE]);
-	// printf("str - 1>> %d\n", str[-1]);
+	if (!str[fd])
+		str[fd] = takeme("");
 	v = 1;
 	buffer = malloc(BUFFER_SIZE + 1);
-	while (v > 0 && newline(str) == -1)
+	while (v > 0 && newline(str[fd]) == -1)
 	{
 		v = read(fd, buffer, BUFFER_SIZE);
 		if (v < 0 || !buffer)
-			return (ft_free(&str), ft_free(&buffer));
+			return (free(str[fd]), str[fd] = NULL, free(buffer), NULL);
 		buffer[v] = '\0';
-		str = join(str, buffer);
+		str[fd] = join(str[fd], buffer);
 	}
-	
-	printf("after join > [%s]\n", str);
-	
-	ft_free(&buffer);
-	if (!str || (v == 0 && str[0] == '\0'))
-		return (ft_free(&str));
-	all = takeme(str);
-	// printf("fd 2 >> %d\n", str[fd]);
-	
+	free(buffer);
+	if (!str[fd] || (v == 0 && str[fd][0] == '\0'))
+		return (free(str[fd]), str[fd] = NULL, NULL);
+	all = takeme(str[fd]);
 	if (!all)
-		return (ft_free(&str));
-	// if (fd != str[fd + BUFFER_SIZE])
-		str[fd] = *afternwl(str);
-	printf("fd 3> [%d]\n", str[fd]);
-	printf("after nwl> [%s]\n", str);
+		return (free(str[fd]), str[fd] = NULL, NULL);
+	str[fd] = afternwl(str[fd]);
 	return (all);
 }

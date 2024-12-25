@@ -6,21 +6,11 @@
 /*   By: ychedmi <ychedmi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 15:43:31 by ychedmi           #+#    #+#             */
-/*   Updated: 2024/12/19 17:02:20 by ychedmi          ###   ########.fr       */
+/*   Updated: 2024/12/25 13:13:03 by ychedmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-void	*ft_free(char **p)
-{
-	if (p)
-	{
-		free(*p);
-		*p = NULL;
-	}
-	return (NULL);
-}
 
 char	*join(char *str1, char *str2)
 {
